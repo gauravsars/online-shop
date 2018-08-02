@@ -10,7 +10,6 @@ public class PageController {
 	
 	@RequestMapping(value ={"/", "/home", "/index"})
 	public ModelAndView index() {
-		
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("greeting", "Welcome to Spring Web MVC Message");
 		return mv;
@@ -18,7 +17,10 @@ public class PageController {
 	}
 	
 	@RequestMapping(value = "/test")
-	public ModelAndView test(@RequestParam("greeting") String greeting){
+	public ModelAndView test(@RequestParam(value = "greeting", required = false) String greeting){
+		if(greeting ==null){
+			greeting = "Hello There";
+		}
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("greeting",greeting);
 		return mv;
