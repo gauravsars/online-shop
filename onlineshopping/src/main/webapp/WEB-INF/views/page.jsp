@@ -12,7 +12,7 @@
 <html lang="en">
 
 <head>
-
+	
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,10 +22,12 @@
     <title> Online Shopping - ${title}</title>
 	<script>
 		window.menu = '${title}';
-	
 	</script>
     <!-- Bootstrap Core CSS -->
     <link href="${css}/bootstrap.min.css" rel="stylesheet">
+    
+     <!-- Bootstrap Core CSS -->
+    <link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="${css}/myapp.css" rel="stylesheet">
@@ -40,12 +42,14 @@
 </head>
 
 <body>
-	
+	<div class="wrapper">
 	<!--Navigation-->
    <%@include file="./shared/navbar.jsp" %>
    
    <!--Page Content-->
    <!--Loading the home content -->
+   <!-- Wrap the page content inside the div named content -->
+   <div class="content">
    <c:if test ="${userClickHome == true}">
    <%@include file="home.jsp" %>
    </c:if>
@@ -57,7 +61,7 @@
    <c:if test ="${userClickContact == true}">
    <%@include file="contact.jsp" %>
    </c:if>
-
+</div>
    <!-- Footer comes here -->
    
    <%@include file="./shared/footer.jsp" %>
@@ -72,5 +76,6 @@
     <!--Custom javascript file -->
     <script src="${js}/myapp.js"></script>
 
+</div>
 </body>
 </html>
