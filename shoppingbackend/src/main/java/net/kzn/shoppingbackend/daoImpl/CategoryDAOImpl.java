@@ -10,7 +10,7 @@ import net.kzn.shoppingbackend.dto.Category;
 @Repository("categoryDAO")
 public class CategoryDAOImpl implements CategoryDAO{
 
-	private static List<Category> categories = new ArrayList<>();
+	private static List<Category> categories = new ArrayList<Category>();
 	
 	static {
 		Category category = new Category();
@@ -20,7 +20,6 @@ public class CategoryDAOImpl implements CategoryDAO{
 		category.setActive(false);
 		category.setImageURL("CAT1_1.png");
 		category.setName("Television");
-		
 		categories.add(category);
 		
 		category = new Category();
@@ -30,7 +29,6 @@ public class CategoryDAOImpl implements CategoryDAO{
 		category.setActive(true);
 		category.setImageURL("CAT1_2.png");
 		category.setName("Mobile");
-		
 		categories.add(category);
 		
 		category = new Category();
@@ -39,14 +37,20 @@ public class CategoryDAOImpl implements CategoryDAO{
 		category.setActive(false);
 		category.setImageURL("CAT1_3.png");
 		category.setName("Laptop");
-		
 		categories.add(category);
 	}
 	
-	@Override
 	public List<Category> list() {
-	
 		return categories;
 	}
-	
+
+	@Override
+	public Category getCategoryById(int id) {
+		for(Category c : categories){	
+			if(c.getId()==id){
+				return c;
+			}
+		}
+		return null;
+	}
 }
