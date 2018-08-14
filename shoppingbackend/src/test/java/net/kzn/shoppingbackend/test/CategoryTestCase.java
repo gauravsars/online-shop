@@ -33,5 +33,30 @@ public class CategoryTestCase {
 		assertEquals("Successfully added a category inside a table!",true,categoryDAO.add(category));
 	}
 	
+	@Test
+	public void testGetCategory(){
+		category = categoryDAO.getCategoryById(3);
+		assertEquals("Successfully fetched a single category from table only when it matches","Television",category.getName());
+	}
+	
+	@Test
+	public void testupdateSingleCategory(){
+		category = categoryDAO.getCategoryById(4);
+		//update to TV from Television
+		category.setName("Television");
+		category.setActive(true);
+		assertEquals("Successfully updated a single category from table and now it matches",true,categoryDAO.update(category));
+	}
+	
+	@Test
+	public void testDeleteCategory(){
+		category = categoryDAO.getCategoryById(3);
+		assertEquals("Successfully updated a single category from table and now it matches",true,categoryDAO.delete(category));	
+	}
+	
+	@Test
+	public void testListCategory(){
+		assertEquals("Successfully updated a single category from table and now it matches",3,categoryDAO.list().size());
+	}
 
 }
