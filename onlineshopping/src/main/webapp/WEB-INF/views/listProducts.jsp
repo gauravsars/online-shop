@@ -7,8 +7,6 @@
                <%@include file="./shared/sidebar.jsp" %>
         </div>
 
-		<div class="col-md-3"></div>
-
 		<!-- to display the actual products -->
 
 		<div class="col-md-9">
@@ -33,18 +31,10 @@
 					</c:if>
 				</div>
 
-
 			</div>
-
 
 		</div>
 
-
 	</div>
-
-
-
-
-
 
 </div>
