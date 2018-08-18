@@ -20,33 +20,6 @@ public class CategoryDAOImpl implements CategoryDAO{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	/*static {
-		Category category = new Category();
-		//adding first category 
-		category.setId(1);
-		category.setDescription("This is some description for Television");
-		category.setActive(false);
-		category.setImageURL("CAT1_1.png");
-		category.setName("Television");
-		categories.add(category);
-		
-		category = new Category();
-		//adding first category 
-		category.setId(2);
-		category.setDescription("This is some description for Mobile");
-		category.setActive(true);
-		category.setImageURL("CAT1_2.png");
-		category.setName("Mobile");
-		categories.add(category);
-		
-		category = new Category();
-		category.setId(3);
-		category.setDescription("This is some description for Laptop");
-		category.setActive(false);
-		category.setImageURL("CAT1_3.png");
-		category.setName("Laptop");
-		categories.add(category);
-	}*/
 	
 	public List<Category> list() {
 		String selectActiveCategory = "FROM Category WHERE active = :active";

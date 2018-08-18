@@ -23,7 +23,7 @@ public class CategoryTestCase {
 		context.refresh();
 		categoryDAO=(CategoryDAO)context.getBean("categoryDAO");
 	}
-	
+/*	
 	@Test
 	public void testAddCategory(){
 		category = new Category();
@@ -41,10 +41,8 @@ public class CategoryTestCase {
 	
 	@Test
 	public void testupdateSingleCategory(){
-		category = categoryDAO.getCategoryById(4);
-		//update to TV from Television
+		category = categoryDAO.getCategoryById(3);
 		category.setName("Television");
-		category.setActive(true);
 		assertEquals("Successfully updated a single category from table and now it matches",true,categoryDAO.update(category));
 	}
 	
@@ -57,6 +55,36 @@ public class CategoryTestCase {
 	@Test
 	public void testListCategory(){
 		assertEquals("Successfully updated a single category from table and now it matches",3,categoryDAO.list().size());
+	}*/
+	
+	@Test
+	 public void testCRUDCategory() {
+		//add operation
+		category = new Category();
+		category.setName("Laptop");
+		category.setDescription("ABCD");
+		category.setActive(true);
+		category.setImageURL("CAT2_PNG");
+		assertEquals("Successfully added a category inside a table!",true,categoryDAO.add(category));
+		
+		category = new Category();
+		category.setName("Television");
+		category.setActive(true);
+		category.setDescription("ABCD");
+		category.setImageURL("CAT2_PNG");
+		assertEquals("Successfully added a category inside a table!",true,categoryDAO.add(category));
+		
+		//update
+		category = categoryDAO.getCategoryById(2);
+		category.setName("TV");
+		assertEquals("Successfully updated a single category from table and now it matches",true,categoryDAO.update(category));
+		//delete
+		category = categoryDAO.getCategoryById(2);
+		assertEquals("Successfully updated a single category from table and now it matches",true,categoryDAO.delete(category));	
+		
+		//fetching the list
+		assertEquals("Successfully updated a single category from table and now it matches",1,categoryDAO.list().size());
+	
 	}
-
+	
 }
