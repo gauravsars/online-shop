@@ -8,8 +8,9 @@ $(function() {
 		break;
 	case 'Contact Us' :	
 		$('#contact').addClass('active');
-		break;
-	default :	
+		break;	
+	default :
+		if(menu=='Home')break;
 		$('#listProducts').addClass('active');
 		$('#a_'+menu).addClass('active');	
 		break;
