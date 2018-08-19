@@ -24,7 +24,7 @@ $(function() {
 	if($table.length) {
 		if(window.categoryId==''){
 			
-			jsonUrl =window.	contextRoot + '/json/data/all/products';
+			jsonUrl =window.contextRoot + '/json/data/all/products';
 		}
 		else{
 			jsonUrl=window.contextRoot + '/json/data/category/'+ window.categoryId +'/products';
