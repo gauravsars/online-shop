@@ -2,7 +2,6 @@ $(function() {
 	
 	//solving the active menu problem.
 	switch(menu) {
-	
 	case 'About Us' :
 		$('#about').addClass('active');
 		break;
@@ -17,29 +16,42 @@ $(function() {
 	}
 	
 	//code for jquery dataTable
-	//create a dataset
-
-	var products = [
-	            	['1','ABC'],
-	            	['1','DEF'],
-	            	['1','GHI'],
-	            	['1','JKL'],
-	            	['1','MNO'],
-	            	['1','PQR'],
-	            	['1','STU'],
-	            	['1','VWX'],
-	            	['1','YZA'],
-	            	['1','BCA']
-	            ];
+	//create a database
 
 	var $table = $('#productListTable');
 	//execute the below code only where we have this table.
 
 	if($table.length) {
+		if(window.categoryId==''){
+			
+			jsonUrl =window.	contextRoot + '/json/data/all/products';
+		}
+		else{
+			jsonUrl=window.contextRoot + '/json/data/category/'+ window.categoryId +'/products';
+		}
 		$table.DataTable({
 			lengthMenu:[[3,5,10,-1],['3 Records','5 Records','10 Records','All Records']],
-			data:products,
-			pageLength:8
+			pageLength:5,
+			ajax: {
+				url: jsonUrl,
+				dataSrc: ''
+			},
+			columns: [
+			          
+			          {
+			        	  data: 'name',
+			          },
+			          {
+			        	  data: 'brand',
+			          },
+			          {
+			        	  data: 'unitPrice',
+			          },
+			          {
+			        	  data: 'quantity',
+			          }
+			          
+			          ]
 		});
 		
 	}
