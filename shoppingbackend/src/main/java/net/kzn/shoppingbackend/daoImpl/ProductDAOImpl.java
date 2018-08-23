@@ -40,7 +40,7 @@ public class ProductDAOImpl implements ProductDAO {
 	
 	public boolean update(Product product){
 		try{
-			product.setActive(false);
+			
 			sessionFactory.getCurrentSession().update(product);
 			return true;
 		}
