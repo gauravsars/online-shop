@@ -76,3 +76,12 @@ footer {
 	width:100px;
 	height:100px;
 }
+.button{
+	background-color: #f44336; /* Red *//*To disable add to cart button*/
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
