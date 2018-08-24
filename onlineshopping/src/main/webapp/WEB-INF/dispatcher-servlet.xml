@@ -12,7 +12,6 @@
     http://www.springframework.org/schema/mvc/spring-mvc.xsd      
     ">
    
-   
    <context:component-scan base-package="net.kzn.onlineshoppping"/>
    <context:component-scan base-package="net.kzn.shoppingbackend"/>
    

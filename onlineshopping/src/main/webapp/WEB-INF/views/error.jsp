@@ -53,10 +53,12 @@
 			<div class="container">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="${contextRoot}/home">Home</a>
+                    <a class="navbar-brand" href="${contextRoot}/about">About</a>
+                    <a class="navbar-brand" href="${contextRoot}/contact/">Contact Us</a>
 				</div>
+				
 			</div>
 		</nav>
-
 
 		<div class="content">
 

@@ -26,4 +26,43 @@ public class GlobalDefaultExceptionHandler {
 		return mv;
 	}
 	
+	@ExceptionHandler(ProductNotFoundException.class)
+	public ModelAndView handlerForProductNotFoundException() {
+		
+		ModelAndView mv = new ModelAndView("error");
+		
+		mv.addObject("errorTitle", "Product not available");
+		
+		mv.addObject("errorDescription", "The product you are looking for is not available now!");
+		
+		mv.addObject("title", "Product Unavailable");
+		
+		return mv;
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handlerGenericException(Exception ex) {
+		
+		ModelAndView mv = new ModelAndView("error");
+		
+		mv.addObject("errorTitle", "Contact Your Administrator");
+		
+		/*
+		 * Only for debugging
+		 */
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		
+		ex.printStackTrace(pw);
+		
+		mv.addObject("errorDescription", ex.toString());
+		
+		mv.addObject("title", "Error");
+		
+		return mv;
+	}
+	
+	
+	
+	
 }
