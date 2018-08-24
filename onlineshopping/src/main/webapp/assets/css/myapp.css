@@ -85,3 +85,7 @@ footer {
     text-decoration: none;
     display: inline-block;
 }
+
+.help-block {
+	color : #ff0000;
+}
