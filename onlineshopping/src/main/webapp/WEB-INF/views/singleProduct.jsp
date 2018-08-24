@@ -62,7 +62,7 @@
 	<c:when test ="${productInfo.quantity < 1}">
 	
 		<a href = "javascript:void(0)" class="btn btn-success disabled"></strike>
-			<span class="button"></span>Add To Cart</strike></a>
+			Add To Cart</strike></a>
 	</c:when>
 	
 	

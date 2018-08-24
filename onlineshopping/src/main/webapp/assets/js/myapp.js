@@ -8,6 +8,9 @@ $(function() {
 	case 'Contact Us' :	
 		$('#contact').addClass('active');
 		break;	
+	case 'Manage Products' :	
+		$('#manageProducts').addClass('active');
+		break;
 	default :
 		if(menu=='Home')break;
 		$('#listProducts').addClass('active');
@@ -74,6 +77,7 @@ $(function() {
 			        	  bSortable: false,
 			        	  mRender: function(data, type, row) {
 			        		  var str = '';
+			        		  str += '<a href="'+window.contextRoot+ '/show/'+data+'/product" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160;';
 			        		  if(row.quantity<1){
 			        			  str += '<a href="javascript:void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
 			        		  }
