@@ -1,14 +1,17 @@
 package net.kzn.onlineshoppping.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 import net.kzn.shoppingbackend.dao.CategoryDAO;
+import net.kzn.shoppingbackend.dao.ProductDAO;
 import net.kzn.shoppingbackend.dto.Category;
 import net.kzn.shoppingbackend.dto.Product;
 
@@ -19,8 +22,11 @@ public class ManagementController {
 	@Autowired
 	CategoryDAO categoryDAO;
 	
+	@Autowired
+	ProductDAO productDAO;
+	
 	@RequestMapping(value ="/products",method = RequestMethod.GET)
-	public ModelAndView showManageProducts(){
+	public ModelAndView showManageProducts(@RequestParam(name="operation" , required=false) String operation){
 		
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("userClickManageProducts", true);
@@ -29,6 +35,14 @@ public class ManagementController {
 		nproduct.setSupplierId(1);
 		nproduct.setActive(true);
 		mv.addObject("product", nproduct);
+		
+		if(operation!=null){
+			
+			if(operation.equals("product")){
+				mv.addObject("message","Product Submitted Successfully");
+			}
+			
+		}
 		return mv;
 	}
 	
@@ -39,5 +53,14 @@ public class ManagementController {
 		
 	}
 	
-
+	//handling product submission
+	@RequestMapping(value="/products" , method=RequestMethod.POST)
+	public String handleFormSubmission(@ModelAttribute("product") Product mproduct){
+		//create a new product Record
+		
+		productDAO.add(mproduct);
+		
+		return "redirect:/manage/products?operation=product";
+	}
+	
 }
