@@ -29,6 +29,7 @@ public class ProductDAOImpl implements ProductDAO {
 	
 	public boolean add(Product product){
 		try{
+			product.setActive(true);
 			sessionFactory.getCurrentSession().persist(product);
 			return true;
 		}

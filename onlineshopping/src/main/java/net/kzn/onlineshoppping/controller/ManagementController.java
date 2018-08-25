@@ -2,6 +2,7 @@ package net.kzn.onlineshoppping.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kzn.onlineshoppping.util.FileUploadUtility;
+import net.kzn.onlineshoppping.validator.ProductValidator;
 import net.kzn.shoppingbackend.dao.CategoryDAO;
 import net.kzn.shoppingbackend.dao.ProductDAO;
 import net.kzn.shoppingbackend.dto.Category;
@@ -59,9 +62,12 @@ public class ManagementController {
 	
 	//handling product submission
 	@RequestMapping(value="/products" , method=RequestMethod.POST)
-	public String handleFormSubmission(@Valid @ModelAttribute("product") Product mproduct, BindingResult results, Model model){
+	public String handleFormSubmission(@Valid @ModelAttribute("product") Product mproduct, BindingResult results, Model model,HttpServletRequest request){
 		//create a new product Record
 		//check if there are any errors.
+		
+		new ProductValidator().validate(mproduct,results);
+		
 		if(results.hasErrors()){
 			model.addAttribute("userClickManageProducts", true);
 			model.addAttribute("title", "Manage Products");
@@ -69,6 +75,11 @@ public class ManagementController {
 			return "page";
 		}
 		productDAO.add(mproduct);
+		
+		//file upload
+		if(!mproduct.getFile().getOriginalFilename().equals("")) {
+			FileUploadUtility.uploadFile(request,mproduct.getFile(),mproduct.getCode());
+		}
 		
 		return "redirect:/manage/products?operation=product";
 	}
