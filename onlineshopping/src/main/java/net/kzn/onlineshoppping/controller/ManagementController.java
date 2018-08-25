@@ -2,8 +2,12 @@ package net.kzn.onlineshoppping.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,9 +59,15 @@ public class ManagementController {
 	
 	//handling product submission
 	@RequestMapping(value="/products" , method=RequestMethod.POST)
-	public String handleFormSubmission(@ModelAttribute("product") Product mproduct){
+	public String handleFormSubmission(@Valid @ModelAttribute("product") Product mproduct, BindingResult results, Model model){
 		//create a new product Record
-		
+		//check if there are any errors.
+		if(results.hasErrors()){
+			model.addAttribute("userClickManageProducts", true);
+			model.addAttribute("title", "Manage Products");
+			model.addAttribute("message", "Validation failed for product details");
+			return "page";
+		}
 		productDAO.add(mproduct);
 		
 		return "redirect:/manage/products?operation=product";

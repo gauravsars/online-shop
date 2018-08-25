@@ -34,7 +34,7 @@
 							<label class="control-label col-md-4" for="name">Enter Product Name</label>
 							<div class=col-md-8>
 							<sf:input type="text" path="name" id="name" placeholder="Product Name" /> 
-							<em class="help-block">Enter enter Product name!</em>
+							<sf:errors path="name" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 
@@ -42,7 +42,7 @@
 							<label class="control-label col-md-4" for="brand">Enter Brand Name</label>
 							<div class=col-md-8>
 							<sf:input type="text" path="brand" id="name" placeholder="Product Brand" /> 
-							<em class="help-block">Enter Brand name!</em>
+							<sf:errors path="brand" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 
@@ -50,7 +50,7 @@
 							<label class="control-label col-md-4" for="product-Description">Enter Description About Product</label>
 							<div class=col-md-8>
 							<sf:textarea rows="4" cols="50" path="description" placeholder="Product Description" />
-							<em class="help-block"> Enter Product Description!</em>
+							<sf:errors path="description" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 
@@ -58,7 +58,7 @@
 							<label class="control-label col-md-4" for="quantity">Enter Unit Price</label>
 							<div class=col-md-8>
 						    <sf:input type="number" path="unitPrice" id="name" placeholder="Unit Price" />
-						    <em class="help-block">Enter Unit Price</em>
+						    <sf:errors path="unitPrice" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 
@@ -66,7 +66,6 @@
 							<label class="control-label col-md-4" for="quantity">Enter Quantity</label>
 							<div class=col-md-8>
 							<sf:input type="number" path="quantity" id="name" placeholder="Quantity Available" />
-							<em class="help-block">Enter Quantity Available</em>
 							</div>
 						</div>
 
